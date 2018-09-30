@@ -8,6 +8,8 @@ public class ChipFactory : MonoBehaviour
     private ChipPool chipPool;
     [SerializeField]
     private MapManager manager;
+    [SerializeField]
+    private RoadFactory roadFactory;
 
     [SerializeField]
     private List<ChipBehaviour> modelChips;
@@ -30,14 +32,20 @@ public class ChipFactory : MonoBehaviour
 
     public void BuildMapFrom(ChipBehaviour origin)
     {
-        BuildChipSet(origin, blueprints[0]);
+        BuildChipSet(origin, GetRandomChipSet());
+    }
+
+    private ChipSet GetRandomChipSet()
+    {
+        return blueprints[Random.Range(0, blueprints.Count)];
     }
 
     public void BuildChipSet(ChipBehaviour origin, ChipSet chipSet)
     {
         var instances = new Dictionary<int, ChipBehaviour>();
         build(0, origin);
-        
+        roadFactory.DecorateRoad(origin);
+
         void build(int i, ChipBehaviour source)
         {
             if (i >= chipSet.Count) return;
@@ -64,6 +72,8 @@ public class ChipFactory : MonoBehaviour
                     build(index, self);
                 }
             }
+
+            roadFactory.DecorateRoad(self);
         }
     }
     

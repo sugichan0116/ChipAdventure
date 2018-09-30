@@ -49,6 +49,14 @@ namespace My.Behaviour.Chip
             nexts.Add(c);
         }
 
+        public IEnumerable<Vector3> NextPositions()
+        {
+            foreach (var next in nexts)
+            {
+                yield return next.transform.position;
+            }
+        }
+
         public IChipEvent Event() => chipEvent;
 
         public void InvokeEvent(ICharactor c)
