@@ -83,8 +83,7 @@ namespace My.Behaviour.Chip
 
         public override string ToString()
         {
-            return name + "\n" +
-                transform.position + "\n" +
+            return "" +
                 chipEvent;
         }
 
