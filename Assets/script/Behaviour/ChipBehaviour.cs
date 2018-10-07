@@ -14,20 +14,7 @@ namespace My.Behaviour.Chip
         [SerializeField]
         private List<ChipBehaviour> nexts;
         private IChipEvent chipEvent;
-
-        // Use this for initialization
-        void Start()
-        {
-            chipEvent = new ExpUpEvent();
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
+        
         public bool IsNextChip(ChipBehaviour c)
         {
             foreach (var next in nexts)
@@ -45,6 +32,7 @@ namespace My.Behaviour.Chip
 
         public void PushNextChip(ChipBehaviour c)
         {
+            Debug.Log("=>L " + c + nexts + nexts.Count);
             if (nexts == null) nexts = new List<ChipBehaviour>();
             nexts.Add(c);
         }
@@ -68,6 +56,7 @@ namespace My.Behaviour.Chip
 
         //ui
         public void SetManager(MapManager m) => manager = m;
+        public void SetEvent(IChipEvent e) => chipEvent = e;
 
         public Vector3 GetPosition() => transform.position;
 

@@ -10,7 +10,7 @@ public class ChipsetFactory : MonoBehaviour
     private ChipFactory chipFactory;
 
     [SerializeField]
-    private ChipsetContainer chipset;
+    private ChipsetContainer chipsetContainer;
 
     public ChipBehaviour Init()
     {
@@ -22,17 +22,19 @@ public class ChipsetFactory : MonoBehaviour
 
     public void BuildMapFrom(ChipBehaviour origin)
     {
-        BuildChipSet(origin, chipset.Random());
+        BuildChipSet(origin, chipsetContainer.Random());
     }
 
     public void BuildChipSet(ChipBehaviour origin, ChipSet chipSet)
     {
+        Debug.Log(chipSet);
         var instances = new Dictionary<int, ChipBehaviour>();
         build(0, origin);
         roadFactory.DecorateRoad(origin);
 
         void build(int i, ChipBehaviour source)
         {
+            Debug.Log(i, source);
             if (i >= chipSet.Count) return;
 
             //既に存在する時生成しない

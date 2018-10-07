@@ -23,11 +23,15 @@ public class ChipFactory : MonoBehaviour
         return preAssebmledChip;
     }
 
+    private Vector3 ExchangeVector2To3(Vector2 v)
+    {
+        return new Vector3(v.x, 0, v.y);
+    }
+
     public ChipBehaviour CreateFrom(ChipBehaviour origin, Vector2 v)
     {
-        Vector3 locate = origin.transform.position;
-        locate.x += v.x;
-        locate.z += v.y;
+        Debug.Log(origin.transform.position);
+        Vector3 locate = origin.transform.position + ExchangeVector2To3(v);
         ChipBehaviour c = Create(locate);
         origin.PushNextChip(c);
         return c;
@@ -35,12 +39,16 @@ public class ChipFactory : MonoBehaviour
 
     public ChipBehaviour Create(Vector3 v)
     {
-        GameObject c;
-        c = Instantiate(FinishedProduct().gameObject);
-        c.transform.Translate(v);
+        ChipBehaviour c = AssembleParts();
+        c.transform.localPosition = v;
         c.transform.parent = chipPool.transform;
-        ChipBehaviour inner = c.GetComponent<ChipBehaviour>();
-        inner.SetManager(manager);
-        return inner;
+        c.SetManager(manager);
+        c.SetEvent(events.Random());
+        return c;
+    }
+
+    private ChipBehaviour AssembleParts()
+    {
+        return Instantiate(FinishedProduct());
     }
 }
