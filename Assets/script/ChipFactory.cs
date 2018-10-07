@@ -14,13 +14,8 @@ public class ChipFactory : MonoBehaviour
     [SerializeField]
     private List<ChipBehaviour> modelChips;
     [SerializeField]
-    private List<ChipSet> blueprints;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
+    private ChipsetContainer chipset;
+    
     public ChipBehaviour Init()
     {
         //initial chip
@@ -28,18 +23,12 @@ public class ChipFactory : MonoBehaviour
         BuildMapFrom(c);
         return c;
     }
-
-
+    
     public void BuildMapFrom(ChipBehaviour origin)
     {
-        BuildChipSet(origin, GetRandomChipSet());
+        BuildChipSet(origin, chipset.Random());
     }
-
-    private ChipSet GetRandomChipSet()
-    {
-        return blueprints[Random.Range(0, blueprints.Count)];
-    }
-
+    
     public void BuildChipSet(ChipBehaviour origin, ChipSet chipSet)
     {
         var instances = new Dictionary<int, ChipBehaviour>();
