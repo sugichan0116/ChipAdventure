@@ -4,9 +4,13 @@ using UnityEngine;
 public class ChipFactory : MonoBehaviour
 {
     [SerializeField]
+    private ChipBehaviour body;
+    [SerializeField]
     private EventContainer events;
     [SerializeField]
     private SymbolContainer symbols;
+    [SerializeField]
+    private TableContainer tables;
 
     [Header("ForInitialize")]
     [SerializeField]
@@ -42,13 +46,16 @@ public class ChipFactory : MonoBehaviour
         ChipBehaviour c = AssembleParts();
         c.transform.localPosition = v;
         c.transform.parent = chipPool.transform;
-        c.SetManager(manager);
-        c.SetEvent(events.Random());
         return c;
     }
 
     private ChipBehaviour AssembleParts()
     {
-        return Instantiate(FinishedProduct());
+        ChipBehaviour c = Instantiate(body);
+        Instantiate(tables.Random()).transform.parent = c.transform;
+        Instantiate(symbols.Random()).transform.parent = c.transform;
+        c.SetEvent(events.Random());
+        c.SetManager(manager);
+        return c;
     }
 }

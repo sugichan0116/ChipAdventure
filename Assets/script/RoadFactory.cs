@@ -7,19 +7,12 @@ public class RoadFactory : MonoBehaviour
     [SerializeField]
     private GameObject road;
     private Vector3 origin;
-
-    // Start is called before the first frame update
-    void Start()
+    
+    void Awake()
     {
         origin = road.transform.localScale;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     public void DecorateRoad(ChipBehaviour c)
     {
         Vector3 pos = c.transform.position;
