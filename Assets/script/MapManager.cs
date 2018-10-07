@@ -6,7 +6,7 @@ using My.Behaviour.Chip;
 public class MapManager : MonoBehaviour {
     public Player player;
     [SerializeField]
-    private ChipFactory factory;
+    private ChipsetFactory factory;
 
     [SerializeField]
     private List<string> uiTextKeys;
