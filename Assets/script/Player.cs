@@ -48,7 +48,7 @@ public class Player : MonoBehaviour, ICharactorable {
 
     public void SetChip(ChipBehaviour c)
     {
-        target = c.GetPosition();
+        target = c.transform.position;
         nowChip = c;
     }
 

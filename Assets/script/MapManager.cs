@@ -1,46 +1,40 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using My.UI;
 using My.Behaviour.Chip;
+using UniRx;
 
 public class MapManager : MonoBehaviour {
-    public Player player;
+    [SerializeField]
+    private Player player;
     [SerializeField]
     private ChipsetFactory factory;
+    [SerializeField]
+    private TextPoolBehaviour popupText;
+    private Subject<TextMessage> textSubject;
 
-    [SerializeField]
-    private List<string> uiTextKeys;
-    [SerializeField]
-    private List<TextGUI> uiTextValues;
-    [SerializeField]
-    private Dictionary<string, TextGUI> uiTexts;
+    private void Awake()
+    {
+        textSubject = new Subject<TextMessage>();
+    }
 
     // Use this for initialization
     void Start () {
-        uiTexts = new Dictionary<string, TextGUI>();
-        for (int i = 0; i < uiTextKeys.Count; i++)
-        {
-            uiTexts[uiTextKeys[i]] = uiTextValues[i];
-        }
+        Debug.Log( popupText.Create(new Vector2(300, 0), "This is Cute Yukarisan!"));
 
         ChipBehaviour c = factory.Init();
         player.SetChip(c);
     }
 	
-	// Update is called once per frame
-	void Update () {
-        
-	}
-
     public void BuildMapFrom(ChipBehaviour origin) 
         => factory.BuildMapFrom(origin);
 
-    public void SetText(string key, string text)
-        => uiTexts[key].SetText(text);
+    public System.IObservable<TextMessage> OnTextChanged
+    {
+        get => textSubject;
+    }
 
-    public void AddText(string key, string text)
-        => uiTexts[key].AddText(text);
-
+    public void UpdateText(TextMessage t) => textSubject.OnNext(t);
+    
     public void ChipListener(ChipBehaviour c)
     {
         player.ManagerListener(c);

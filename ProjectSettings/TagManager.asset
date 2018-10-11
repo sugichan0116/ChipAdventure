@@ -6,6 +6,10 @@ TagManager:
   tags:
   - List
   - Chip
+  - Manager
+  - Factory
+  - Container
+  - Pool
   layers:
   - Default
   - TransparentFX

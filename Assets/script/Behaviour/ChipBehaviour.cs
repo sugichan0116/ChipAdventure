@@ -57,25 +57,35 @@ namespace My.Behaviour.Chip
         //ui
         public void SetManager(MapManager m) => manager = m;
         public void SetEvent(IChipEvent e) => chipEvent = e;
-
-        public Vector3 GetPosition() => transform.position;
-
+        
         public void PublishManager() => manager.ChipListener(this);
 
-        public void PublishDetail() => manager.SetText("detail", "[ChipEvent]\n" + ToString());
+        public void PublishDetail() => manager.UpdateText(
+            new UI.TextMessage() {
+                key = "detail",
+                type = UI.MessageType.SET,
+                text = "[ChipEvent]\n" + ToString()
+            }
+        );
 
         public void PublishMessageLog(string text)
         {
             if (text == null) return;
-            manager.AddText("log", text);
+            manager.UpdateText(
+                 new UI.TextMessage()
+                 {
+                     key = "log",
+                     type = UI.MessageType.ADD,
+                     text = text
+                 }
+            );
         }
 
         public override string ToString()
         {
-            return "" +
-                chipEvent;
+            return chipEvent.ToString();
         }
-
+        
         public string ToStringDebug()
         {
             string log = "";
