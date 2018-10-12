@@ -61,9 +61,9 @@ namespace My.Behaviour.Chip
 
         public void PublishDetail() => manager.UpdateText(
             new UI.TextMessage() {
-                key = "detail",
+                key = "event",
                 type = UI.MessageType.SET,
-                text = "[ChipEvent]\n" + ToString()
+                text = "[Event]\n" + ToString()
             }
         );
 
