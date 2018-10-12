@@ -63,7 +63,7 @@ namespace My.Behaviour.Chip
             new UI.TextMessage() {
                 key = "event",
                 type = UI.MessageType.SET,
-                text = "[Event]\n" + ToString()
+                text = ":event:\n" + ToString()
             }
         );
 
@@ -75,7 +75,7 @@ namespace My.Behaviour.Chip
                  {
                      key = "log",
                      type = UI.MessageType.ADD,
-                     text = text
+                     text = text + ":attack::exp:"
                  }
             );
             manager.UpdateText(

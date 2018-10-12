@@ -7,11 +7,11 @@ namespace My.UI
     public class RichTextFormatter : MonoBehaviour
     {
         [SerializeField]
+        private string iconSet;
+        [SerializeField]
         private List<string> spriteTextKeys;
         [SerializeField]
         private List<string> spriteTextValues;
-        [SerializeField]
-        private string iconSet;
         private static string iconSetName;
         private static Dictionary<string, string> spriteTexts;
 

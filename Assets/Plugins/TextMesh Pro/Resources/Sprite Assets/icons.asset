@@ -13,40 +13,96 @@ MonoBehaviour:
   m_Name: icons
   m_EditorClassIdentifier: 
   hashCode: 128033944
-  material: {fileID: 21926002743512426}
+  material: {fileID: 21819312452249502}
   materialHashCode: 0
   spriteSheet: {fileID: 2800000, guid: 9407ad2e60ed2b94f931e1614f88b344, type: 3}
   spriteInfoList:
   - id: 0
+    x: 322
+    y: 20
+    width: 60
+    height: 26
+    xOffset: 4.42
+    yOffset: 21.9
+    xAdvance: 66.8
+    scale: 1
+    name: event
+    hashCode: 123696492
+    unicode: 0
+    pivot: {x: -30, y: 13}
+    sprite: {fileID: 21300010, guid: 9407ad2e60ed2b94f931e1614f88b344, type: 3}
+  - id: 1
+    x: 262
+    y: 6
+    width: 51
+    height: 51
+    xOffset: 9.3
+    yOffset: 40.94
+    xAdvance: 66.8
+    scale: 1
+    name: exp
+    hashCode: 114029
+    unicode: 0
+    pivot: {x: -25.5, y: 25.5}
+    sprite: {fileID: 21300008, guid: 9407ad2e60ed2b94f931e1614f88b344, type: 3}
+  - id: 2
     x: 3
-    y: 4
+    y: 3
     width: 57
     height: 57
-    xOffset: 2.89
-    yOffset: 45.49
-    xAdvance: 57
-    scale: 1.16
+    xOffset: 4.42
+    yOffset: 45.69
+    xAdvance: 66.8
+    scale: 1
     name: attack
     hashCode: -358435832
     unicode: 0
     pivot: {x: -28.5, y: 28.5}
     sprite: {fileID: 21300000, guid: 9407ad2e60ed2b94f931e1614f88b344, type: 3}
-  - id: 1
+  - id: 3
     x: 67
-    y: 4
+    y: 3
     width: 57
     height: 57
-    xOffset: 2.89
-    yOffset: 45.49
-    xAdvance: 57
-    scale: 1.16
+    xOffset: 4.42
+    yOffset: 45.69
+    xAdvance: 66.8
+    scale: 1
     name: diffence
     hashCode: 1759033216
     unicode: 0
     pivot: {x: -28.5, y: 28.5}
     sprite: {fileID: 21300002, guid: 9407ad2e60ed2b94f931e1614f88b344, type: 3}
+  - id: 4
+    x: 131
+    y: 3
+    width: 57
+    height: 57
+    xOffset: 4.42
+    yOffset: 45.69
+    xAdvance: 66.8
+    scale: 1
+    name: magic
+    hashCode: 132570273
+    unicode: 0
+    pivot: {x: -28.5, y: 28.5}
+    sprite: {fileID: 21300004, guid: 9407ad2e60ed2b94f931e1614f88b344, type: 3}
+  - id: 5
+    x: 195
+    y: 3
+    width: 57
+    height: 57
+    xOffset: 4.42
+    yOffset: 45.69
+    xAdvance: 66.8
+    scale: 1
+    name: life
+    hashCode: 3770054
+    unicode: 0
+    pivot: {x: -28.5, y: 28.5}
+    sprite: {fileID: 21300006, guid: 9407ad2e60ed2b94f931e1614f88b344, type: 3}
   fallbackSpriteAssets: []
---- !u!21 &21926002743512426
+--- !u!21 &21819312452249502
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 1
