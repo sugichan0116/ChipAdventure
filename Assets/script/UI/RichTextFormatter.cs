@@ -10,6 +10,9 @@ namespace My.UI
         private List<string> spriteTextKeys;
         [SerializeField]
         private List<string> spriteTextValues;
+        [SerializeField]
+        private string iconSet;
+        private static string iconSetName;
         private static Dictionary<string, string> spriteTexts;
 
         private void Start()
@@ -20,6 +23,7 @@ namespace My.UI
             {
                 spriteTexts[spriteTextKeys[i]] = spriteTextValues[i];
             }
+            iconSetName = iconSet;
         }
 
         private static void Init()
@@ -37,7 +41,7 @@ namespace My.UI
                 int i;
                 string attr = (int.TryParse(e.Value, out i)) ? "index" : "name";
                 //Debug.Log(attr);
-                t = t.Replace(e.Key, $"<sprite=\"christmasdeco\" {attr}={e.Value}>");
+                t = t.Replace(e.Key, $"<sprite=\"{iconSetName}\" {attr}={e.Value}>");
             }
 
             return t;

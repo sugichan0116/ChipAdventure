@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -403,7 +403,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: <sprite="christmasdeco" index=3>
+  m_text: <sprite="icons" index=1>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f04b6a6b45511bf4595d06a46032ccd0, type: 2}
   m_sharedMaterial: {fileID: 21166976759481098, guid: f04b6a6b45511bf4595d06a46032ccd0,
@@ -574,7 +574,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 0
   m_RenderingPath: 1
-  m_TargetTexture: {fileID: 286452739}
+  m_TargetTexture: {fileID: 1136951520}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -649,38 +649,6 @@ MonoBehaviour:
   manager: {fileID: 1099870808}
   preAssebmledChip: {fileID: 3997117200306664751, guid: 8b8f9e13d4c03434eaed65462258f8ec,
     type: 3}
---- !u!84 &286452739
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 1024
-  m_Height: 768
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 7
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!4 &353612902 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 8191d87fddfce7b4da6985493f52510c,
@@ -1035,8 +1003,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 619648134}
+  m_Children: []
   m_Father: {fileID: 1898450033}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1143,14 +1110,14 @@ MonoBehaviour:
   m_margin: {x: 20, y: 0, z: 0, w: 30}
   m_textInfo:
     textComponent: {fileID: 561061636}
-    characterCount: 29
+    characterCount: 62
     spriteCount: 0
-    spaceCount: 5
-    wordCount: 7
+    spaceCount: 6
+    wordCount: 11
     linkCount: 0
-    lineCount: 5
+    lineCount: 7
     pageCount: 1
-    materialCount: 2
+    materialCount: 1
   m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -1160,7 +1127,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
-  - {fileID: 619648135}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1235,80 +1202,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &619648133
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 619648134}
-  - component: {fileID: 619648136}
-  - component: {fileID: 619648135}
-  m_Layer: 5
-  m_Name: TMP SubMeshUI [TextMeshPro/Sprite]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &619648134
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619648133}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 561061635}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &619648135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619648133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 2103686, guid: c41005c129ba4d66911b75229fd70b45, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_fontAsset: {fileID: 11400000, guid: f04b6a6b45511bf4595d06a46032ccd0, type: 2}
-  m_spriteAsset: {fileID: 11400000, guid: c41005c129ba4d66911b75229fd70b45, type: 2}
-  m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: 2103686, guid: c41005c129ba4d66911b75229fd70b45, type: 2}
-  m_isDefaultMaterial: 1
-  m_padding: 0
-  m_canvasRenderer: {fileID: 619648136}
-  m_TextComponent: {fileID: 561061636}
-  m_materialReferenceIndex: 1
---- !u!222 &619648136
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619648133}
-  m_CullTransparentMesh: 0
 --- !u!1 &684572961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1360,7 +1253,8 @@ MonoBehaviour:
   spriteTextKeys:
   - ':event:'
   spriteTextValues:
-  - 3
+  - attack
+  iconSet: icons
 --- !u!1 &694866273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1856,6 +1750,38 @@ Transform:
   m_Father: {fileID: 614169579}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &1136951520
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 1024
+  m_Height: 768
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 7
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1174376445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1886,7 +1812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 21180635319452920, guid: 002a266f96cfcef438d91c633d71bcfc,
+  m_Material: {fileID: 21926002743512426, guid: c561b8e931cbf6846817a4df2ffc5e59,
     type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -1896,9 +1822,9 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_fontAsset: {fileID: 11400000, guid: f04b6a6b45511bf4595d06a46032ccd0, type: 2}
-  m_spriteAsset: {fileID: 11400000, guid: 002a266f96cfcef438d91c633d71bcfc, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: c561b8e931cbf6846817a4df2ffc5e59, type: 2}
   m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: 21180635319452920, guid: 002a266f96cfcef438d91c633d71bcfc,
+  m_sharedMaterial: {fileID: 21926002743512426, guid: c561b8e931cbf6846817a4df2ffc5e59,
     type: 2}
   m_isDefaultMaterial: 1
   m_padding: 0
@@ -2373,6 +2299,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d63de2a60e2e9247a46f5b86fb47aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!84 &1631853042
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 1024
+  m_Height: 768
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 7
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1678879869
 GameObject:
   m_ObjectHideFlags: 0
@@ -2555,8 +2513,8 @@ MonoBehaviour:
   sourceCamera: {fileID: 1696616571}
   outlineCamera: {fileID: 129153420}
   outlineShaderMaterial: {fileID: 0}
-  renderTexture: {fileID: 286452739}
-  extraRenderTexture: {fileID: 2037492263}
+  renderTexture: {fileID: 1136951520}
+  extraRenderTexture: {fileID: 1631853042}
 --- !u!1 &1755220328
 GameObject:
   m_ObjectHideFlags: 0
@@ -3111,38 +3069,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: event
---- !u!84 &2037492263
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 1024
-  m_Height: 768
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 7
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &2077785162
 GameObject:
   m_ObjectHideFlags: 0
