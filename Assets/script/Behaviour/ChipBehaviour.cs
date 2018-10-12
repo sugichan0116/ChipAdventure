@@ -32,7 +32,6 @@ namespace My.Behaviour.Chip
 
         public void PushNextChip(ChipBehaviour c)
         {
-            Debug.Log("=>L " + c + nexts + nexts.Count);
             if (nexts == null) nexts = new List<ChipBehaviour>();
             nexts.Add(c);
         }
@@ -79,6 +78,14 @@ namespace My.Behaviour.Chip
                      text = text
                  }
             );
+            manager.UpdateText(
+                  new UI.TextMessage()
+                  {
+                      key = "popup",
+                      text = text,
+                      locate = new Vector3(-200, 0)
+                  }
+             );
         }
 
         public override string ToString()

@@ -34,7 +34,6 @@ public class ChipsetFactory : MonoBehaviour
 
         void build(int i, ChipBehaviour source)
         {
-            Debug.Log(i, source);
             if (i >= chipSet.Count) return;
 
             //既に存在する時生成しない

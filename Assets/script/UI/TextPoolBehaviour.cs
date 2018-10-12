@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UniRx.Toolkit;
 using System.Collections.Generic;
+using UniRx;
 
 namespace My.UI
 {
@@ -9,31 +10,23 @@ namespace My.UI
         [SerializeField]
         private GameObject prefab;
         private TextPool pool;
-        private List<TextGUI> list;
 
         private void Start()
         {
-            list = new List<TextGUI>();
             pool = new TextPool() { prefab = prefab };
         }
-
-        private void Update()
-        {
-            foreach (var item in list)
-            {
-                if (item.IsValid() == false) pool.Return(item);
-            }
-        }
-
+        
         public TextGUI Create(Vector3 locate, string text)
         {
             TextGUI obj = pool.Rent();
-            
-            obj.GetComponent<TranslateBehaviour>().SetStartPosition(locate);
             obj.SetText(text);
             obj.transform.SetParent(transform);
-
-            list.Add(obj);
+            TranslateBehaviour trans = obj.GetComponent<TranslateBehaviour>();
+            trans.SetStartPosition(locate);
+            trans.OnDispose?.Where(x => x).Subscribe(_ => {
+                pool.Return(obj);
+                Debug.Log("return");
+            });
 
             return obj;
         }

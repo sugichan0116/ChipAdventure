@@ -59,9 +59,7 @@ namespace My.Behaviour.Chip
                     list.Add(index);
                 }
             }
-
-            Debug.Log($"{text}: {list.Count}");
-
+            
             return list;
         }
 

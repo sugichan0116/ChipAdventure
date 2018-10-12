@@ -24,11 +24,7 @@ namespace My.UI
         {
             textRenderer.text += RichTextFormatter.Replace(t) + "\n";
         }
-
-        public bool IsValid()
-        {
-            return (trans?.IsStop() ?? false) == false;
-        }
+        
     }
 
     public enum MessageType
@@ -44,5 +40,6 @@ namespace My.UI
     {
         public string key, text;
         public MessageType type;
+        public Vector3 locate;
     }
 }

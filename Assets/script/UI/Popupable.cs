@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UniRx;
+using UnityEngine;
 
 public class TranslateBehaviour : MonoBehaviour
 {
@@ -6,10 +7,10 @@ public class TranslateBehaviour : MonoBehaviour
     {
 
     }
-    public virtual bool IsStop()
-    {
-        return false;
-    }
+    
+    public virtual ReactiveProperty<bool> OnDispose { get; }
+
+    public virtual bool IsStop() => false;
 }
 
 public class Popupable : TranslateBehaviour
@@ -18,20 +19,21 @@ public class Popupable : TranslateBehaviour
     private Vector3 translate;
     [SerializeField]
     private float speed;
-    private Vector3 target;
-    private Vector3 start;
-    private bool isDestroy, isInit = false;
+    private Vector3 target, start;
+    private bool isInit;
+    private ReactiveProperty<bool> isDispose;
 
     public override void SetStartPosition(Vector3 position)
     {
         start = position;
+        isInit = false;
+        isDispose = new ReactiveProperty<bool>(false);
     }
-
+    
     // Update is called once per frame
     void Update()
     {
 
-        Debug.Log(GetComponent<RectTransform>().anchoredPosition);
         if (isInit)
         {
             transform.localPosition = Vector3.Lerp(
@@ -39,20 +41,25 @@ public class Popupable : TranslateBehaviour
                 target,
                 speed * Time.deltaTime
             );
+            
+            if(!isDispose.Value) isDispose.Value = ((transform.localPosition - target).magnitude < 10f);
         }
         else
         {
             RectTransform t = GetComponent<RectTransform>();
-            Debug.Log(t.anchoredPosition);
             t.anchoredPosition = start;
             target = start + translate;
             isInit = true;
         }
     }
 
+    public override ReactiveProperty<bool> OnDispose
+    {
+        get => isDispose;
+    }
+
     public override bool IsStop()
     {
-        if (isDestroy == false) isDestroy = ((transform.localPosition - target).magnitude < 10f);
-        return isDestroy;
+        return isDispose.Value;
     }
 }

@@ -8,8 +8,6 @@ public class MapManager : MonoBehaviour {
     private Player player;
     [SerializeField]
     private ChipsetFactory factory;
-    [SerializeField]
-    private TextPoolBehaviour popupText;
     private Subject<TextMessage> textSubject;
 
     private void Awake()
@@ -19,8 +17,6 @@ public class MapManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Debug.Log( popupText.Create(new Vector2(300, 0), "This is Cute Yukarisan!"));
-
         ChipBehaviour c = factory.Init();
         player.SetChip(c);
     }

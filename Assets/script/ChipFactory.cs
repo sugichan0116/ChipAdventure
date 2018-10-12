@@ -34,7 +34,6 @@ public class ChipFactory : MonoBehaviour
 
     public ChipBehaviour CreateFrom(ChipBehaviour origin, Vector2 v)
     {
-        Debug.Log(origin.transform.position);
         Vector3 locate = origin.transform.position + ExchangeVector2To3(v);
         ChipBehaviour c = Create(locate);
         origin.PushNextChip(c);
