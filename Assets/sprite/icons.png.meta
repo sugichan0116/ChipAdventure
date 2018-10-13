@@ -1,18 +1,13 @@
 fileFormatVersion: 2
-guid: 82149dcc9bd19434095be3180aa84ffd
+guid: 9407ad2e60ed2b94f931e1614f88b344
 TextureImporter:
   fileIDToRecycleName:
-    21300000: christmasdeco_0
-    21300002: christmasdeco_1
-    21300004: christmasdeco_2
-    21300006: christmasdeco_3
-    21300008: christmasdeco_4
-    21300010: christmasdeco_5
-    21300012: christmasdeco_6
-    21300014: christmasdeco_7
-    21300016: christmasdeco_8
-    21300018: christmasdeco_9
-    21300020: christmasdeco_10
+    21300000: icons_0
+    21300002: icons_1
+    21300004: icons_2
+    21300006: icons_3
+    21300008: icons_4
+    21300010: icons_5
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -95,13 +90,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: christmasdeco_0
+      name: icons_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 32
-        height: 32
+        x: 3
+        y: 3
+        width: 57
+        height: 57
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -109,19 +104,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2408f418bfed0b4dbe2c1eb05d8d8d9
+      spriteID: 16f8b164ebdf0b34c97a744f27ff8598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: christmasdeco_1
+      name: icons_1
       rect:
         serializedVersion: 2
-        x: 36
-        y: 65
-        width: 26
-        height: 27
+        x: 67
+        y: 3
+        width: 57
+        height: 57
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -129,19 +124,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9850b620f8f49a14fbb36e7be7d9a958
+      spriteID: 0382eb061c5633b4b953e2d222ee4b7e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: christmasdeco_2
+      name: icons_2
       rect:
         serializedVersion: 2
-        x: 68
-        y: 72
-        width: 24
-        height: 23
+        x: 131
+        y: 3
+        width: 57
+        height: 57
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,19 +144,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce87a68fc70e3fe439f90fdc5ee8df42
+      spriteID: b332d5e8db610284ca820937fc68ae07
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: christmasdeco_3
+      name: icons_3
       rect:
         serializedVersion: 2
-        x: 4
-        y: 35
-        width: 26
-        height: 25
+        x: 195
+        y: 3
+        width: 57
+        height: 57
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,19 +164,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d086475dc99abd6499ac0663587fd493
+      spriteID: 1ce37b825b90fff488d99562f99b6343
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: christmasdeco_4
+      name: icons_4
       rect:
         serializedVersion: 2
-        x: 36
-        y: 35
-        width: 26
-        height: 25
+        x: 262
+        y: 6
+        width: 51
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,39 +184,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc9d96672df4d4f4bb71973545ff0e6e
+      spriteID: 278af43d854aba9449a6b062c2f25d57
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: christmasdeco_5
+      name: icons_5
       rect:
         serializedVersion: 2
-        x: 70
-        y: 35
-        width: 21
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e65ea633d6649f045849cfbba4d8fbc1
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: christmasdeco_6
-      rect:
-        serializedVersion: 2
-        x: 0
+        x: 322
         y: 20
-        width: 32
-        height: 12
+        width: 60
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,47 +204,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebbead97f4015384ebc022ebdadd455c
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: christmasdeco_7
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 5
-        width: 17
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cf2d80de1ed389c449f4f9d4b293b538
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: christmasdeco_8
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 5
-        width: 17
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: abf312b95a3c5c7408f062484ebe15c1
+      spriteID: 9ca20db104783d84fb4eea4f311ff9f1
       vertices: []
       indices: 
       edges: []
@@ -277,7 +212,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 9bc5f178751c716428c41421efbafe59
+    spriteID: c61664b7e88d7604fb3f888b2ae09d0e
     vertices: []
     indices: 
     edges: []

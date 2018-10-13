@@ -22,7 +22,7 @@ namespace My.GameSystem.Parameter
                 name = new Dictionary<string, string>
                 {
                     { "LV", "Lv" },
-                    { "EXP", "Exp" },
+                    { "EXP", ":exp:Exp" },
                     { "R_PHS", "物理耐性" }
                 };
             }

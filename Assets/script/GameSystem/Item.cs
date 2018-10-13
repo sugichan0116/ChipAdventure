@@ -5,7 +5,17 @@
 
     }
 
-    public class Weapon : IArticle
+    public interface IEquipable
+    {
+
+    }
+
+    public interface IWeapon : IEquipable
+    {
+
+    }
+
+    public class Sword : IWeapon
     {
 
     }
