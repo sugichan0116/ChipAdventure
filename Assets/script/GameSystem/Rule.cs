@@ -38,10 +38,10 @@ namespace My.GameSystem.Rule
             if(exp != null)
             {
                 int levelup = 0;
-                while(exp.Max() == exp.Get())
+                while(exp.Max == exp.Value)
                 {
-                    exp.Add(-exp.Max());
-                    exp.Max(exp.Max() + s["LV"].Get() * 100);
+                    exp.Value -= exp.Max;
+                    exp.Max += s["LV"].Get() * 100;
                     s["LV"].Add(1);
                     levelup++;
                 }

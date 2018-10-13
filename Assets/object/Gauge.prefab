@@ -158,6 +158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2687856986010789709}
   - component: {fileID: 6666745188982146664}
+  - component: {fileID: 6360163703181939511}
   m_Layer: 5
   m_Name: Gauge
   m_TagString: Untagged
@@ -204,7 +205,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -229,12 +230,28 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.693
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &6360163703181939511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6360163703181939510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3016745cf490b41a40f6d4cd365cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 1, g: 0.88523763, b: 0.4481132, a: 1}
+  image: {fileID: 3054052420761562277}
+  volume: 100
+  pivot: {x: 0, y: 0.5}
 --- !u!1 &7311329192392333572
 GameObject:
   m_ObjectHideFlags: 0

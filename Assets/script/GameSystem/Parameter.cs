@@ -11,6 +11,14 @@ namespace My.GameSystem.Parameter
         bool Add(float value);
     }
 
+    public interface IGauge
+    {
+        float NormalizedValue { get; }
+        float Value { get; }
+        float Min { get; }
+        float Max { get; }
+    }
+
     public class Parameters
     {
         private static Dictionary<string, string> name;
@@ -69,9 +77,14 @@ namespace My.GameSystem.Parameter
         public override string ToString() => Header() + para.ToString();
     }
 
-    public class Limited : DefaultParameter
+    public class Limited : DefaultParameter, IGauge
     {
         private float min = 0f, max = 1f;
+
+        public float NormalizedValue { get => Value / Max; }
+        public float Value { get => Get(); set => Set(value); }
+        public float Min { get => min; set => min = value; }
+        public float Max { get => max; set => max = value; }
 
         public Limited(string ID, float Value = 0f, float Min = 0f, float Max = 1f)
             : base(ID, Value)
@@ -79,15 +92,10 @@ namespace My.GameSystem.Parameter
             min = Min;
             max = Max;
         }
-
-        public float Min() => min;
-        public float Max() => max;
-        public void Min(float value) => min = value;
-        public void Max(float value) => max = value;
-
+        
         public new float Get()
         {
-            return Parameters.Constrain(GetRow(), Min(), Max());
+            return Parameters.Constrain(GetRow(), Min, Max);
         }
 
         public float GetRow()
@@ -99,9 +107,14 @@ namespace My.GameSystem.Parameter
             Header() + GetRow().ToString() + "/" + max.ToString();
     }
 
-    public class Gauge : DefaultParameter
+    public class Gauge : DefaultParameter, IGauge
     {
         private float min = 0f, max = 1f;
+
+        public float NormalizedValue { get => Value / Max; }
+        public float Value { get => Get(); set => Set(value); }
+        public float Min { get => min; set => min = value; }
+        public float Max { get => max; set => max = value; }
 
         public Gauge(string ID, float Value = 0f, float Min = 0f, float Max = 1f)
             : base(ID, Value)
@@ -109,12 +122,7 @@ namespace My.GameSystem.Parameter
             min = Min;
             max = Max;
         }
-
-        public float Min() => min;
-        public float Max() => max;
-        public void Min(float value) => min = value;
-        public void Max(float value) => max = value;
-
+        
         protected override bool Validate()
         {
             float old = Get();
