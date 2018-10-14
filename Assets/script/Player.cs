@@ -52,8 +52,5 @@ public class Player : MonoBehaviour, ICharactorable {
         nowChip = c;
     }
 
-    public ICharactor Charactor()
-    {
-        return p;
-    }
+    public ICharactor Charactor => p;
 }

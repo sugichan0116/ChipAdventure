@@ -22,7 +22,7 @@ namespace My.UI
         void Start()
         {
             target = player as ICharactorable;
-            status = new ReactiveProperty<IStatus>(target.Charactor().Status());
+            status = new ReactiveProperty<IStatus>(target.Charactor.Status);
             list = new Dictionary<IParameter, ParameterBehaviour>();
 
             foreach (var key in status.Value.Keys())

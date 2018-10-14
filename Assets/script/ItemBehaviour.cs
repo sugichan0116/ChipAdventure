@@ -1,4 +1,5 @@
-﻿using My.UI;
+﻿using My.GameSystem.Item;
+using My.UI;
 using My.Util;
 using UnityEngine;
 
@@ -9,6 +10,11 @@ public class ItemBehaviour : MonoBehaviour
     private void Start()
     {
         manager = Finder.WithTag<MapManager>("Manager");
+    }
+
+    public void SetEquipable(IEquipable e)
+    {
+        
     }
 
     public void OnClick()

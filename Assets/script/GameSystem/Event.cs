@@ -4,14 +4,23 @@ namespace My.GameSystem.Event
 {
     public interface IEventSituation
     {
-        ICharactor Player { get; }
-        ICharactor Enemy { get; }
+        EventStatus Status { get; }
+        ICharactor Self { get; }
+        ICharactor Target { get; }
+    }
+
+    public enum EventStatus
+    {
+        STANDBY,
+        PROCESSING,
+        BATTLE
     }
 
     public class EventSituation : IEventSituation
     {
-        public ICharactor Player { get; set; }
-        public ICharactor Enemy { get; set; }
+        public EventStatus Status { get; set; }
+        public ICharactor Self { get; set; }
+        public ICharactor Target { get; set; }
     }
 
     public interface IEventable

@@ -2,7 +2,6 @@
 using My.UI;
 using My.Behaviour.Chip;
 using UniRx;
-using My.GameSystem.Charactor;
 using My.GameSystem.Event;
 
 public class MapManager : MonoBehaviour
@@ -20,12 +19,13 @@ public class MapManager : MonoBehaviour
         textSubject = new Subject<TextMessage>();
         EventSituation = new EventSituation()
         {
-            Player = player.Charactor()
+            Status = EventStatus.STANDBY,
+            Self = player.Charactor
         };
     }
-
-    // Use this for initialization
-    void Start () {
+    
+    void Start ()
+    {
         ChipBehaviour c = factory.Init();
         player.SetChip(c);
     }
@@ -43,7 +43,10 @@ public class MapManager : MonoBehaviour
     
     public void OnClick(ChipBehaviour c)
     {
-        player.OnInvokeEvent(c);
-        if (c.IsLeaf()) BuildMapFrom(c);
+        if(EventSituation.Status == EventStatus.STANDBY)
+        {
+            player.OnInvokeEvent(c);
+            if (c.IsLeaf()) BuildMapFrom(c);
+        }
     }
 }

@@ -8,7 +8,6 @@ namespace My.GameSystem.Charactor
     
     public class Human : ICharactor
     {
-        private IStatus status;
         private List<IArticle> items;
         private List<IRule> rules;
 
@@ -16,8 +15,15 @@ namespace My.GameSystem.Charactor
 
         private void Init()
         {
-            status = new DefaultStatus();
-            items = new List<IArticle>();
+            Status = new DefaultStatus();
+            items = new List<IArticle>()
+            {
+                new Sword(),
+                new Sword(),
+                new Sword(),
+                new Sword(),
+                new Sword(),
+            };
             rules = new List<IRule>
             {
                 new LevelRule(),
@@ -25,7 +31,8 @@ namespace My.GameSystem.Charactor
             };
         }
 
-        public IStatus Status() => status;
+        public IStatus Status { get; private set; }
+        public IEnumerable<IArticle> Items => items;
 
         public string Command(string order)
         {
@@ -34,7 +41,7 @@ namespace My.GameSystem.Charactor
             {
                 foreach (var rule in rules)
                 {
-                    log += rule.Force(status);
+                    log += rule.Force(Status);
                 }
             }
 
@@ -45,7 +52,7 @@ namespace My.GameSystem.Charactor
 
         public override string ToString()
         {
-            return "[" + Name + "]\n" + status;
+            return "[" + Name + "]\n" + Status;
         }
 
     }

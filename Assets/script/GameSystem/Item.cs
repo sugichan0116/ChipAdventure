@@ -1,11 +1,13 @@
-﻿namespace My.GameSystem.Item
+﻿using My.GameSystem.Status;
+
+namespace My.GameSystem.Item
 {
     public interface IArticle
     {
-
+        IStatus Status { get; }
     }
 
-    public interface IEquipable
+    public interface IEquipable : IArticle
     {
 
     }
@@ -17,6 +19,6 @@
 
     public class Sword : IWeapon
     {
-
+        public IStatus Status => throw new System.NotImplementedException();
     }
 }

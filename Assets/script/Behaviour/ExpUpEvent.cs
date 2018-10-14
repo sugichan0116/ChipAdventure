@@ -13,7 +13,7 @@ namespace My.GameSystem.Event
         
         public string Invoke(IEventSituation e)
         {
-            IParameter exp = e.Player.Status()["EXP"];
+            IParameter exp = e.Self.Status["EXP"];
             exp.Value += expVolume;
             return $":event: Get {expVolume} Exp. You are lucky boy.";
         }
