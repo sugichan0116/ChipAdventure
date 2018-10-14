@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventContainer : MonoBehaviour, IContainer<IChipEvent>
+public class EventContainer : MonoBehaviour, IContainer<IEvent>
 {
     [SerializeField]
     private List<GameObject> events;
     [SerializeField]
-    private IChipEvent test;
+    private IEvent test;
 
-    public IChipEvent this[int index] => events?[index].GetComponent<IChipEvent>();
+    public IEvent this[int index] => events?[index].GetComponent<IEvent>();
 
     public int Count => events.Count;
 
-    public IChipEvent Random() => this[UnityEngine.Random.Range(0, Count)];
+    public IEvent Random() => this[UnityEngine.Random.Range(0, Count)];
 }

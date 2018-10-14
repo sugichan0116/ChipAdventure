@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace My.GameSystem.Event
 {
-    public class ExpUpEvent : MonoBehaviour, IChipEvent
+    public class ExpUpEvent : MonoBehaviour, IEvent
     {
         [SerializeField]
         private int expVolume = 3000;

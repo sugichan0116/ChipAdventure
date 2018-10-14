@@ -73,7 +73,7 @@ namespace My.GameSystem.Parameter
     public class Limited : DefaultParameter, IGauge
     {
         public float NormalizedValue { get => Value / Max; }
-        public new float Value { get => Parameters.Constrain(RowValue, Min, Max); }
+        public new float Value { get => Parameters.Constrain(RowValue, Min, Max); set => base.Value = value; }
         public float RowValue { get => base.Value; }
         public float Min { get; set; } = 0f;
         public float Max { get; set; } = 1f;

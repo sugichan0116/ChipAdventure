@@ -2,7 +2,7 @@
 using My.GameSystem.Event;
 using UnityEngine;
 
-public class BattleEvent : MonoBehaviour, IChipEvent
+public class BattleEvent : MonoBehaviour, IEvent
 {
     [SerializeField]
     private ICharactorable enemy;

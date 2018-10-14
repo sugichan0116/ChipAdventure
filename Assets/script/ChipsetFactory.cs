@@ -39,7 +39,7 @@ public class ChipsetFactory : MonoBehaviour
             //既に存在する時生成しない
             if (instances.ContainsKey(i))
             {
-                source.PushNextChip(instances[i]);
+                source.PushNext(instances[i]);
                 return;
             }
 

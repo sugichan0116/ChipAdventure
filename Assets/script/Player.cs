@@ -35,13 +35,13 @@ public class Player : MonoBehaviour, ICharactorable {
         mainCamera.transform.position = transform.position + offset;
     }
     
-    public void ManagerListener(ChipBehaviour c)
+    public void OnInvokeEvent(ChipBehaviour c)
     {
         Debug.Log($"player transition. {nowChip.ToStringDebug()} => {c}");
-        if (nowChip.IsNextChip(c))
+        if (nowChip.IsNext(c))
         {
             SetChip(c);
-            nowChip.InvokeEvent(p);
+            nowChip.InvokeEvent();
             nowChip.PublishMessageLog(p.Command("UPDATE"));
         }
     }

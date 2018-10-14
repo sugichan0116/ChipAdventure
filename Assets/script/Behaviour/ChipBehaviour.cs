@@ -1,21 +1,28 @@
 ﻿using My.GameSystem.Charactor;
 using My.GameSystem.Event;
+using My.Util;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace My.Behaviour.Chip
 {
-    public class ChipBehaviour : MonoBehaviour
+    interface INode<T>
     {
-        //ui
-        [SerializeField]
+        void PushNext(T t);
+        bool IsNext(T t);
+        bool IsLeaf();
+    }
+
+    public class ChipBehaviour : MonoBehaviour, INode<ChipBehaviour>, IEventable
+    {
         private MapManager manager;
 
         [SerializeField]
         private List<ChipBehaviour> nexts;
-        private IChipEvent chipEvent;
-        
-        public bool IsNextChip(ChipBehaviour c)
+
+        private void Awake() => manager = Finder.WithTag<MapManager>("Manager");
+
+        public bool IsNext(ChipBehaviour c)
         {
             foreach (var next in nexts)
             {
@@ -25,17 +32,15 @@ namespace My.Behaviour.Chip
             return false;
         }
 
-        public bool IsLeafChip()
-        {
-            return nexts?.Count == 0;
-        }
+        public bool IsLeaf() => nexts?.Count == 0;
 
-        public void PushNextChip(ChipBehaviour c)
+        public void PushNext(ChipBehaviour c)
         {
             if (nexts == null) nexts = new List<ChipBehaviour>();
             nexts.Add(c);
         }
 
+        //??????
         public IEnumerable<Vector3> NextPositions()
         {
             foreach (var next in nexts)
@@ -44,22 +49,22 @@ namespace My.Behaviour.Chip
             }
         }
 
-        public IChipEvent Event() => chipEvent;
+        public IEvent Event { get; private set; }
 
-        public void InvokeEvent(IEventSituation e)
+        public void InvokeEvent()
         {
-            string outText = chipEvent.Invoke(e);
+            string outText = Event.Invoke(manager.EventSituation);
             PublishMessageLog(outText);
         }
 
 
         //ui
         public void SetManager(MapManager m) => manager = m;
-        public void SetEvent(IChipEvent e) => chipEvent = e;
+        public void SetEvent(IEvent e) => Event = e;
         
-        public void PublishManager() => manager.ChipListener(this);
+        public void OnClick() => manager.OnClick(this);
 
-        public void PublishDetail() => manager.UpdateText(
+        public void OnHover() => manager.UpdateText(
             new UI.TextMessage() {
                 key = "event",
                 type = UI.MessageType.SET,
@@ -78,21 +83,18 @@ namespace My.Behaviour.Chip
                      text = text + ":attack::exp:"
                  }
             );
-            manager.UpdateText(
-                  new UI.TextMessage()
-                  {
-                      key = "popup",
-                      text = text,
-                      locate = new Vector3(-200, 0)
-                  }
-             );
+            //manager.UpdateText(
+            //      new UI.TextMessage()
+            //      {
+            //          key = "popup",
+            //          text = text,
+            //          locate = new Vector3(-200, 0)
+            //      }
+            // );
         }
 
-        public override string ToString()
-        {
-            return chipEvent.ToString();
-        }
-        
+        public override string ToString() => Event.ToString();
+
         public string ToStringDebug()
         {
             string log = "";

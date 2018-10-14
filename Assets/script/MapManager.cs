@@ -3,8 +3,12 @@ using My.UI;
 using My.Behaviour.Chip;
 using UniRx;
 using My.GameSystem.Charactor;
+using My.GameSystem.Event;
 
-public class MapManager : MonoBehaviour {
+public class MapManager : MonoBehaviour
+{
+    [SerializeField]
+    private BattleManager battle;
     [SerializeField]
     private Player player;
     [SerializeField]
@@ -14,6 +18,10 @@ public class MapManager : MonoBehaviour {
     private void Awake()
     {
         textSubject = new Subject<TextMessage>();
+        EventSituation = new EventSituation()
+        {
+            Player = player.Charactor()
+        };
     }
 
     // Use this for initialization
@@ -29,12 +37,13 @@ public class MapManager : MonoBehaviour {
     {
         get => textSubject;
     }
+    public IEventSituation EventSituation { get; internal set; }
 
     public void UpdateText(TextMessage t) => textSubject.OnNext(t);
     
-    public void ChipListener(ChipBehaviour c)
+    public void OnClick(ChipBehaviour c)
     {
-        player.ManagerListener(c);
-        if (c.IsLeafChip()) BuildMapFrom(c);
+        player.OnInvokeEvent(c);
+        if (c.IsLeaf()) BuildMapFrom(c);
     }
 }

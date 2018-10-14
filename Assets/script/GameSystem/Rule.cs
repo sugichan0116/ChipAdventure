@@ -41,8 +41,8 @@ namespace My.GameSystem.Rule
                 while(exp.Max == exp.Value)
                 {
                     exp.Value -= exp.Max;
-                    exp.Max += s["LV"].Get() * 100;
-                    s["LV"].Add(1);
+                    exp.Max += s["LV"].Value * 100;
+                    s["LV"].Value++;
                     levelup++;
                 }
 
@@ -62,7 +62,7 @@ namespace My.GameSystem.Rule
 
             //RuleHelper.Require(s, new List<string> { "STR", "ATK" });
             
-            s["ATK"].Set(s["STR"].Get());
+            s["ATK"].Value = s["STR"].Value;
 
             return log;
         }
