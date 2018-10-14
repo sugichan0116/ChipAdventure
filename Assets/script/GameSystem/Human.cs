@@ -12,10 +12,7 @@ namespace My.GameSystem.Charactor
         private List<IArticle> items;
         private List<IRule> rules;
 
-        public Human()
-        {
-            Init();
-        }
+        public Human() => Init();
 
         private void Init()
         {

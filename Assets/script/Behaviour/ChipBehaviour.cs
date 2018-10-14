@@ -46,9 +46,9 @@ namespace My.Behaviour.Chip
 
         public IChipEvent Event() => chipEvent;
 
-        public void InvokeEvent(ICharactor c)
+        public void InvokeEvent(IEventSituation e)
         {
-            string outText = chipEvent.HappenEvent(c);
+            string outText = chipEvent.Invoke(e);
             PublishMessageLog(outText);
         }
 

@@ -1,29 +1,65 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using My.GameSystem.Charactor;
 using My.GameSystem.Status;
+using UniRx;
+using My.GameSystem.Parameter;
+using System.Collections.Generic;
 
 namespace My.UI
 {
     public class StatusUI : MonoBehaviour
     {
-
         [SerializeField]
-        private GameObject target;
-        private TextGUI gui;
+        private Player player;
+        private ICharactorable target;
+        [SerializeField]
+        private ParameterBehaviour gaugeParameter, parameter;
 
-        // Use this for initialization
+        private ReactiveProperty<IStatus> status;
+        private Dictionary<IParameter, ParameterBehaviour> list;
+
+        //きもいので必ず修正しましょう！
         void Start()
         {
-            gui = GetComponent<TextGUI>();
+            target = player as ICharactorable;
+            status = new ReactiveProperty<IStatus>(target.Charactor().Status());
+            list = new Dictionary<IParameter, ParameterBehaviour>();
+
+            foreach (var key in status.Value.Keys())
+            {
+                list.Add(status.Value[key], CreateParameter(status.Value[key]));
+            }
+
+            status.Subscribe(status => {
+                Debug.Log("ohho!!!" + status);
+                foreach (var key in status.Keys())
+                {
+                    UpdateParameter(status[key]);
+                }
+            });
+        }
+        
+        private void UpdateParameter(IParameter p)
+        {
+            if(list.ContainsKey(p) == false)
+            {
+                list.Add(p, CreateParameter(p));
+            }
         }
 
-        // Update is called once per frame
-        void Update()
+        private ParameterBehaviour CreateParameter(IParameter p)
         {
-            ICharactor c = target.GetComponent<ICharactorable>().Charactor();
-            gui.SetText(c.ToString());
+            ParameterBehaviour pb;
+            if (p is IGauge g)
+            {
+                pb = Instantiate(gaugeParameter);
+                pb.GetComponentInChildren<GaugeBehaviour>().SetGauge(g);
+            }
+            else pb = Instantiate(parameter);
+
+            pb.transform.SetParent(transform);
+            pb.SetParameter(p);
+            return pb;
         }
     }
 }

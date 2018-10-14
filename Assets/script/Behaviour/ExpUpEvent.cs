@@ -6,23 +6,18 @@ namespace My.GameSystem.Event
 {
     public class ExpUpEvent : MonoBehaviour, IChipEvent
     {
+        [SerializeField]
         private int expVolume = 3000;
-
-        public string HappenEvent(ICharactor c)
+        [SerializeField]
+        private string description;
+        
+        public string Invoke(IEventSituation e)
         {
-            IParameter exp = c.Status()["EXP"];
-            exp.Add(expVolume);
-            return DecorateStyle("[Event]", "color") + $" Get {expVolume} Exp. You are lucky boy.";
+            IParameter exp = e.Player.Status()["EXP"];
+            exp.Value += expVolume;
+            return $":event: Get {expVolume} Exp. You are lucky boy.";
         }
 
-        private string DecorateStyle(string text, string tag)
-        {
-            return $"<{tag}=orange>{text}</{tag}>";
-        }
-
-        public override string ToString()
-        {
-            return "Exp Up Event. Lucky!";
-        }
+        public override string ToString() => description;
     }
 }

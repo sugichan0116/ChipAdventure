@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace My.GameSystem.Parameter
 {
     public interface IParameter
     {
-        float Get();
-        bool Set(float value);
-        bool Add(float value);
+        float Value { get; set; }
     }
 
     public interface IGauge
@@ -31,6 +28,8 @@ namespace My.GameSystem.Parameter
                 {
                     { "LV", "Lv" },
                     { "EXP", ":exp:Exp" },
+                    { "HP", ":life:HP" },
+                    { "STR", ":attack:STR" },
                     { "R_PHS", "物理耐性" }
                 };
             }
@@ -47,92 +46,70 @@ namespace My.GameSystem.Parameter
 
     public class DefaultParameter : IParameter
     {
-        private float para;
+        private float value;
         private string id;
+
+        public float Value {
+            get => value;
+            set {
+                this.value = value;
+                Validate();
+            }
+        }
 
         public DefaultParameter(string ID, float Value = 0f)
         {
             id = ID;
-            para = Value;
+            value = Value;
         }
-
-        public float Get() => para;
-
-        public bool Set(float value)
-        {
-            para = value;
-            return Validate();
-        }
-
-        public bool Add(float value)
-        {
-            para += value;
-            return Validate();
-        }
-
+        
         protected virtual bool Validate() => false;
 
         protected string Header() => Parameters.Name(id) + " : ";
 
-        public override string ToString() => Header() + para.ToString();
+        public override string ToString() => Header() + Value;
     }
 
     public class Limited : DefaultParameter, IGauge
     {
-        private float min = 0f, max = 1f;
-
         public float NormalizedValue { get => Value / Max; }
-        public float Value { get => Get(); set => Set(value); }
-        public float Min { get => min; set => min = value; }
-        public float Max { get => max; set => max = value; }
+        public new float Value { get => Parameters.Constrain(RowValue, Min, Max); }
+        public float RowValue { get => base.Value; }
+        public float Min { get; set; } = 0f;
+        public float Max { get; set; } = 1f;
 
         public Limited(string ID, float Value = 0f, float Min = 0f, float Max = 1f)
             : base(ID, Value)
         {
-            min = Min;
-            max = Max;
+            this.Min = Min;
+            this.Max = Max;
         }
         
-        public new float Get()
-        {
-            return Parameters.Constrain(GetRow(), Min, Max);
-        }
-
-        public float GetRow()
-        {
-            return base.Get();
-        }
-
-        public override string ToString() =>
-            Header() + GetRow().ToString() + "/" + max.ToString();
+        public override string ToString() => Header() + $"{RowValue} / {Max}";
     }
 
     public class Gauge : DefaultParameter, IGauge
     {
-        private float min = 0f, max = 1f;
-
         public float NormalizedValue { get => Value / Max; }
-        public float Value { get => Get(); set => Set(value); }
-        public float Min { get => min; set => min = value; }
-        public float Max { get => max; set => max = value; }
+        public float Min { get; set; } = 0f;
+        public float Max { get; set; } = 1f;
 
         public Gauge(string ID, float Value = 0f, float Min = 0f, float Max = 1f)
             : base(ID, Value)
         {
-            min = Min;
-            max = Max;
+            this.Min = Min;
+            this.Max = Max;
         }
         
         protected override bool Validate()
         {
-            float old = Get();
-            Set(Parameters.Constrain(old, min, max));
+            float old = Value;
+            Value = Parameters.Constrain(old, Min, Max);
 
-            return old != Get();
+            return old != Value;
         }
 
-        public override string ToString() =>
-            Header() + Get().ToString() + "/" + max.ToString();
+        public override string ToString() => Header() + $"{Value} / {Max}";
     }
     
     public class Magnification : DefaultParameter
@@ -143,12 +120,24 @@ namespace My.GameSystem.Parameter
 
         }
 
-        public override string ToString() => Header() + Get().ToString("##%");
+        public override string ToString() => Header() + Value.ToString("##%");
     }
 
     public class Dice : DefaultParameter
     {
         private int number, surface;
+
+        public new float Value { get
+            {
+                float sum = base.Value;
+                for (int i = 0; i < Math.Abs(number); i++)
+                {
+                    sum += UnityEngine.Random.Range(1, surface) * number / Math.Abs(number);
+                }
+
+                return sum;
+            }
+        }
 
         public Dice(string ID, int Value = 0, int Number = 1, int Surface = 6)
             : base(ID, Value)
@@ -156,19 +145,8 @@ namespace My.GameSystem.Parameter
             number = Number;
             surface = (Surface > 1) ? Surface : 2;
         }
-
-        public new float Get()
-        {
-            float sum = base.Get();
-            for (int i = 0; i < Math.Abs(number); i++)
-            {
-                sum += UnityEngine.Random.Range(1, surface) * number / Math.Abs(number);
-            }
-
-            return sum;
-        }
-
+        
         public override string ToString() => 
-            Header() + $"{number}d{surface}{base.Get().ToString("+#;-#;")}";
+            Header() + $"{number}d{surface}{base.Value.ToString("+#;-#;")}";
     }
 }

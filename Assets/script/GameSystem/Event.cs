@@ -2,16 +2,20 @@
 
 namespace My.GameSystem.Event
 {
+    public interface IEventSituation
+    {
+        ICharactor Player { get; }
+        ICharactor Enemy { get; }
+    }
+
+
     public interface IChipEvent
     {
-        string HappenEvent(ICharactor c);
+        string Invoke(IEventSituation e);
     }
     
     public class BattleEvent : IChipEvent
     {
-        public string HappenEvent(ICharactor c)
-        {
-            return "";
-        }
+        public virtual string Invoke(IEventSituation e) => "";
     }
 }

@@ -248,9 +248,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d3016745cf490b41a40f6d4cd365cf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 1, g: 0.88523763, b: 0.4481132, a: 1}
+  color: {r: 0.4470588, g: 1, b: 0.4926092, a: 1}
   image: {fileID: 3054052420761562277}
   volume: 100
+  max: 200
   pivot: {x: 0, y: 0.5}
 --- !u!1 &7311329192392333572
 GameObject:

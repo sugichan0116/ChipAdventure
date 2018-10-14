@@ -15,7 +15,7 @@ public class Player : MonoBehaviour, ICharactorable {
     private Vector3 offset;
 
     // Use this for initialization
-    void Start () {
+    void Awake () {
         p = new Human
         {
             Name = "Player"

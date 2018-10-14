@@ -2,6 +2,7 @@
 using My.UI;
 using My.Behaviour.Chip;
 using UniRx;
+using My.GameSystem.Charactor;
 
 public class MapManager : MonoBehaviour {
     [SerializeField]

@@ -9,19 +9,39 @@ public class GaugeBehaviour : MonoBehaviour
     [SerializeField]
     private Image image;
     [SerializeField]
-    private float volume;
+    private float volume, max;
     [SerializeField]
     private Vector2 pivot;
-    private IGauge gauge;
 
-    // Start is called before the first frame update
-    void Start()
+    private IGauge gauge;
+    private RectTransform rect;
+    private Slider slider;
+    
+    void Awake()
+    {
+        rect = GetComponent<RectTransform>();
+        slider = GetComponent<Slider>();
+
+        Init();
+    }
+
+    private void Init()
     {
         image.color = color;
-        RectTransform rect = GetComponent<RectTransform>();
         rect.pivot = pivot;
-        rect.sizeDelta = new Vector2(volume, 10);
-        gauge = new Gauge("HP", 100, 0, 200);
-        GetComponent<Slider>().value = gauge.NormalizedValue;
     }
+
+    private void Update()
+    {
+        SetValue();
+        SetWidth();
+    }
+
+    private void SetValue() => slider.value = gauge.NormalizedValue;
+
+    private void SetWidth() => rect.sizeDelta = new Vector2(Mathf.Min(Width, max), 10);
+
+    protected virtual float Width => Mathf.Log(gauge.Max) * 10 + 100;
+
+    public void SetGauge(IGauge g) => gauge = g;
 }
