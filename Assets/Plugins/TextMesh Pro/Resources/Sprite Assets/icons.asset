@@ -22,9 +22,9 @@ MonoBehaviour:
     y: 20
     width: 60
     height: 25
-    xOffset: -30
-    yOffset: 12.5
-    xAdvance: 60
+    xOffset: -12.7
+    yOffset: 22.8
+    xAdvance: 49.6
     scale: 1
     name: event
     hashCode: 123696492
@@ -36,9 +36,9 @@ MonoBehaviour:
     y: 20
     width: 60
     height: 25
-    xOffset: -30
-    yOffset: 12.5
-    xAdvance: 60
+    xOffset: 9.2
+    yOffset: 23.6
+    xAdvance: 71.2
     scale: 1
     name: battle
     hashCode: -418680118
@@ -50,9 +50,9 @@ MonoBehaviour:
     y: 6
     width: 51
     height: 51
-    xOffset: -25.5
-    yOffset: 25.5
-    xAdvance: 51
+    xOffset: 9.2
+    yOffset: 23.6
+    xAdvance: 71.2
     scale: 1
     name: exp
     hashCode: 114029
@@ -64,8 +64,8 @@ MonoBehaviour:
     y: 3
     width: 57
     height: 57
-    xOffset: -28.5
-    yOffset: 28.5
+    xOffset: -16.1
+    yOffset: 48.63
     xAdvance: 57
     scale: 1
     name: attack
@@ -78,8 +78,8 @@ MonoBehaviour:
     y: 3
     width: 57
     height: 57
-    xOffset: -28.5
-    yOffset: 28.5
+    xOffset: -16.1
+    yOffset: 48.63
     xAdvance: 57
     scale: 1
     name: diffence
@@ -92,8 +92,8 @@ MonoBehaviour:
     y: 3
     width: 57
     height: 57
-    xOffset: -28.5
-    yOffset: 28.5
+    xOffset: -16.1
+    yOffset: 48.63
     xAdvance: 57
     scale: 1
     name: magic
@@ -106,8 +106,8 @@ MonoBehaviour:
     y: 3
     width: 57
     height: 57
-    xOffset: -28.5
-    yOffset: 28.5
+    xOffset: -16.1
+    yOffset: 48.63
     xAdvance: 57
     scale: 1
     name: life

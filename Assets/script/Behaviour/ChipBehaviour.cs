@@ -53,7 +53,8 @@ namespace My.Behaviour.Chip
 
         public void InvokeEvent()
         {
-            string outText = Event.Invoke(manager.EventSituation);
+            manager.EventSituation.Invoke(Event);
+            string outText = manager.EventSituation.Log;
             PublishMessageLog(outText);
         }
 

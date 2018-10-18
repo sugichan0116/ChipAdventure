@@ -1,6 +1,7 @@
 ﻿using My.Util;
 using UniRx;
 using UnityEngine;
+using System.Linq;
 
 namespace My.UI
 {
@@ -40,7 +41,10 @@ namespace My.Util
     {
         public static T WithTag<T>(string tag)
         {
-            return GameObject.FindGameObjectWithTag(tag).GetComponent<T>();
+            return GameObject
+                .FindGameObjectsWithTag(tag)
+                .FirstOrDefault(g => g.GetComponent<T>() != null)
+                .GetComponent<T>();
         }
     }
 }

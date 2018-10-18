@@ -6,15 +6,18 @@ using UnityEngine;
 public class ItemBehaviour : MonoBehaviour
 {
     private MapManager manager;
+    private ItemManager itemManager;
+    private IArticle item;
 
     private void Start()
     {
         manager = Finder.WithTag<MapManager>("Manager");
+        itemManager = Finder.WithTag<ItemManager>("Manager");
     }
 
     public void SetEquipable(IEquipable e)
     {
-        
+        item = e;
     }
 
     public void OnClick()
@@ -25,5 +28,7 @@ public class ItemBehaviour : MonoBehaviour
             type = MessageType.SET,
             text = "clicked !"
         });
+
+        itemManager.OnClick(item);
     }
 }

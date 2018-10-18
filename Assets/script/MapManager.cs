@@ -7,8 +7,6 @@ using My.GameSystem.Event;
 public class MapManager : MonoBehaviour
 {
     [SerializeField]
-    private BattleManager battle;
-    [SerializeField]
     private Player player;
     [SerializeField]
     private ChipsetFactory factory;
@@ -33,11 +31,9 @@ public class MapManager : MonoBehaviour
     public void BuildMapFrom(ChipBehaviour origin) 
         => factory.BuildMapFrom(origin);
 
-    public System.IObservable<TextMessage> OnTextChanged
-    {
-        get => textSubject;
-    }
-    public IEventSituation EventSituation { get; internal set; }
+    public System.IObservable<TextMessage> OnTextChanged => textSubject;
+
+    public IEventSituation EventSituation { get; set; }
 
     public void UpdateText(TextMessage t) => textSubject.OnNext(t);
     

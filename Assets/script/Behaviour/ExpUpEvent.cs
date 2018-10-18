@@ -1,5 +1,4 @@
-﻿using My.GameSystem.Charactor;
-using My.GameSystem.Parameter;
+﻿using My.GameSystem.Parameter;
 using UnityEngine;
 
 namespace My.GameSystem.Event
@@ -11,11 +10,11 @@ namespace My.GameSystem.Event
         [SerializeField]
         private string description;
         
-        public string Invoke(IEventSituation e)
+        public void Invoke(IEventSituation e)
         {
             IParameter exp = e.Self.Status["EXP"];
             exp.Value += expVolume;
-            return $":event: Get {expVolume} Exp. You are lucky boy.";
+            e.Log = $":event: Get {expVolume} Exp. You are lucky boy.";
         }
 
         public override string ToString() => description;

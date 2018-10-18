@@ -1,5 +1,5 @@
 ﻿using My.GameSystem.Item;
-using My.GameSystem.Rule;
+using My.GameSystem.Law.Status.Status;
 using My.GameSystem.Status;
 using System.Collections.Generic;
 
@@ -9,7 +9,7 @@ namespace My.GameSystem.Charactor
     public class Human : ICharactor
     {
         private List<IArticle> items;
-        private List<IRule> rules;
+        private List<IStatusLaw> rules;
 
         public Human() => Init();
 
@@ -24,7 +24,7 @@ namespace My.GameSystem.Charactor
                 new Sword(),
                 new Sword(),
             };
-            rules = new List<IRule>
+            rules = new List<IStatusLaw>
             {
                 new LevelRule(),
                 new AttackRule()

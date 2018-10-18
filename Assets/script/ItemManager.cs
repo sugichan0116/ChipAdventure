@@ -8,6 +8,8 @@ public class ItemManager : MonoBehaviour
     private Player player;
     [SerializeField]
     private ItemBehaviour prefab;
+    [SerializeField]
+    private BattleManager battle;
     private ICharactor charactor;
 
     void Start()
@@ -23,5 +25,9 @@ public class ItemManager : MonoBehaviour
             }
         }
     }
-    
+
+    public void OnClick(IArticle equipable)
+    {
+        battle.OnClick(equipable);
+    }
 }

@@ -1,19 +1,21 @@
-﻿using My.GameSystem.Charactor;
-using My.GameSystem.Event;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class BattleEvent : MonoBehaviour, IEvent
+namespace My.GameSystem.Event
 {
-    [SerializeField]
-    private CharactorBehaviour enemy;
-
-    public string Invoke(IEventSituation c)
+    public class BattleEvent : MonoBehaviour, IEvent
     {
-        return this.ToString();
-    }
+        [SerializeField]
+        private CharactorBehaviour enemy;
 
-    public override string ToString()
-    {
-        return $":battle: You encounted {enemy}!";
+        public void Invoke(IEventSituation e)
+        {
+            e.Status = EventStatus.BATTLE;
+            e.Log = ToString();
+        }
+
+        public override string ToString()
+        {
+            return $":battle: You encounted {enemy}!";
+        }
     }
 }

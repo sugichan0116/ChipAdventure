@@ -2,69 +2,82 @@
 using My.GameSystem.Status;
 using System.Collections.Generic;
 
-namespace My.GameSystem.Rule
+namespace My.GameSystem.Law.Status
 {
-    public interface IRule
+    namespace Contact
     {
-        string Force(IStatus s);
+        //interact
+        public interface IContactLaw
+        {
+            string Interact(IStatus me, IStatus you);
+        }
+
+
     }
 
-    public class RuleHelper
+    namespace Status
     {
-        public static bool Require(IStatus s, List<string> list)
+        public interface IStatusLaw
         {
-            bool isLack = false;
-            foreach (var item in list)
+            string Force(IStatus s);
+        }
+
+        public class RuleHelper
+        {
+            public static bool Require(IStatus s, List<string> list)
             {
-                if (s[item] == null)
+                bool isLack = false;
+                foreach (var item in list)
                 {
-                    isLack = true;
-                    s[item] = new DefaultParameter(item, 0); //kokoyabai
+                    if (s[item] == null)
+                    {
+                        isLack = true;
+                        s[item] = new DefaultParameter(item, 0); //kokoyabai
+                    }
                 }
+                return isLack;
             }
-            return isLack;
         }
-    }
 
-    public class LevelRule : IRule
-    {
-        public string Force(IStatus s)
+        public class LevelRule : IStatusLaw
         {
-            string log = null;
-
-            //RuleHelper.Require(s, new List<string> { "LV", "EXP" });
-
-            Limited exp = s["EXP"] as Limited;
-            if(exp != null)
+            public string Force(IStatus s)
             {
-                int levelup = 0;
-                while(exp.Max == exp.Value)
+                string log = null;
+                
+                Limited exp = s["EXP"] as Limited;
+                if (exp != null)
                 {
-                    exp.Value -= exp.Max;
-                    exp.Max += s["LV"].Value * 100;
-                    s["LV"].Value++;
-                    levelup++;
+                    int levelup = 0;
+                    while (exp.Max == exp.Value)
+                    {
+                        exp.Value -= exp.Max;
+                        exp.Max += s["LV"].Value * 100;
+                        s["LV"].Value++;
+                        levelup++;
+                    }
+
+                    if (levelup > 0)
+                        log = $":event: {levelup} Level UP! you are now {s["LV"]}.";
                 }
 
-                if(levelup > 0)
-                log = $":event: {levelup} Level UP! you are now {s["LV"]}.";
+                return log;
             }
-
-            return log;
         }
-    }
 
-    public class AttackRule : IRule
-    {
-        public string Force(IStatus s)
+        public class AttackRule : IStatusLaw
         {
-            string log = null;
+            public string Force(IStatus s)
+            {
+                string log = null;
 
-            //RuleHelper.Require(s, new List<string> { "STR", "ATK" });
-            
-            s["ATK"].Value = s["STR"].Value;
+                //RuleHelper.Require(s, new List<string> { "STR", "ATK" });
 
-            return log;
+                s["ATK"].Value = s["STR"].Value;
+
+                return log;
+            }
         }
     }
+    
 }
