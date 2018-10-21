@@ -1,11 +1,19 @@
 ﻿using My.GameSystem.Item;
-using My.GameSystem.Law.Status.Status;
+using My.GameSystem.Law.Status;
 using My.GameSystem.Status;
+using My.UI;
 using System.Collections.Generic;
 
 namespace My.GameSystem.Charactor
 {
-    
+    public enum OrderType
+    {
+        NONE,
+        EVERY,
+        PASS,
+        ARRIVE
+    }
+
     public class Human : ICharactor
     {
         private List<IArticle> items;
@@ -27,17 +35,17 @@ namespace My.GameSystem.Charactor
             rules = new List<IStatusLaw>
             {
                 new LevelRule(),
-                new AttackRule()
+                new DeadRule()
             };
         }
 
         public IStatus Status { get; private set; }
         public IEnumerable<IArticle> Items => items;
 
-        public string Command(string order)
+        public TextMessage Command(OrderType order)
         {
             string log = "";
-            if(order == "UPDATE")
+            if(order == OrderType.EVERY)
             {
                 foreach (var rule in rules)
                 {
@@ -45,7 +53,9 @@ namespace My.GameSystem.Charactor
                 }
             }
 
-            return (log == "") ? null : log;
+            return new TextMessage() {
+                text = log
+            };
         }
 
         public string Name { get; set; } = "defaultHumanName";

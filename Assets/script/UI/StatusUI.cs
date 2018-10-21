@@ -11,7 +11,7 @@ namespace My.UI
     {
         [SerializeField]
         private Player player;
-        private ICharactorable target;
+        private ICharactor target;
         [SerializeField]
         private ParameterBehaviour gaugeParameter, parameter;
 
@@ -21,8 +21,12 @@ namespace My.UI
         //きもいので必ず修正しましょう！
         void Start()
         {
-            target = player as ICharactorable;
-            status = new ReactiveProperty<IStatus>(target.Charactor.Status);
+            Init((player as ICharactorable).Charactor);
+        }
+
+        public void Init(ICharactor target)
+        {
+            status = new ReactiveProperty<IStatus>(target.Status);
             list = new Dictionary<IParameter, ParameterBehaviour>();
 
             foreach (var key in status.Value.Keys())

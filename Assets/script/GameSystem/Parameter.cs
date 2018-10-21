@@ -43,7 +43,7 @@ namespace My.GameSystem.Parameter
                     origin;
         }
     }
-
+    
     public class DefaultParameter : IParameter
     {
         private float value;

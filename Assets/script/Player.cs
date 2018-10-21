@@ -42,7 +42,7 @@ public class Player : MonoBehaviour, ICharactorable {
         {
             SetChip(c);
             nowChip.InvokeEvent();
-            nowChip.PublishMessageLog(p.Command("UPDATE"));
+            nowChip.PublishMessageLog(p.Command(OrderType.EVERY).text);
         }
     }
 

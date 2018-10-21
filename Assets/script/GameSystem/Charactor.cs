@@ -1,5 +1,6 @@
 ﻿using My.GameSystem.Item;
 using My.GameSystem.Status;
+using My.UI;
 using System.Collections.Generic;
 
 namespace My.GameSystem.Charactor
@@ -11,7 +12,7 @@ namespace My.GameSystem.Charactor
         IStatus Status { get; }
         IEnumerable<IArticle> Items { get; }
 
-        string Command(string order);
+        TextMessage Command(OrderType order);
         string ToString();
     }
 

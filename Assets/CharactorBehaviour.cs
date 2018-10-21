@@ -8,6 +8,13 @@ public class CharactorBehaviour : MonoBehaviour, ICharactorable
 
     private void Awake()
     {
+        Debug.Log("しね");
+        Init();
+    }
+
+    private void Init()
+    {
+        if(charactor == null)
         charactor = new Human() { Name = "Slime" };
     }
 

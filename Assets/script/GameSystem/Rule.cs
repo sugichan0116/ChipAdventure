@@ -1,18 +1,29 @@
-﻿using My.GameSystem.Parameter;
+﻿using My.GameSystem.Charactor;
+using My.GameSystem.Parameter;
 using My.GameSystem.Status;
 using System.Collections.Generic;
 
-namespace My.GameSystem.Law.Status
+namespace My.GameSystem.Law
 {
     namespace Contact
     {
         //interact
         public interface IContactLaw
         {
-            string Interact(IStatus me, IStatus you);
+            string Interact(ICharactor me, ICharactor you);
         }
 
+        public class AttackCommand : IContactLaw
+        {
+            public string Interact(ICharactor me, ICharactor you)
+            {
+                new Status.AttackRule().Force(me.Status);
 
+                you.Status["DAMAGE"].Value = me.Status["DAMAGE"].Value;
+
+                return you.Name + new Status.DiffenceRule().Force(you.Status);
+            }
+        }
     }
 
     namespace Status
@@ -69,13 +80,28 @@ namespace My.GameSystem.Law.Status
         {
             public string Force(IStatus s)
             {
-                string log = null;
+                s["DAMAGE"].Value = s["STR"].Value * 10;
 
-                //RuleHelper.Require(s, new List<string> { "STR", "ATK" });
+                return null;
+            }
+        }
 
-                s["ATK"].Value = s["STR"].Value;
+        public class DiffenceRule : IStatusLaw
+        {
+            public string Force(IStatus s)
+            {
+                s["HP"].Value = s["DAMAGE"].Value;
 
-                return log;
+                return $" injured in {s["DAMAGE"].Value} points!";
+            }
+        }
+
+        public class DeadRule : IStatusLaw
+        {
+            public string Force(IStatus s)
+            {
+                if(s["HP"].Value <= 0) s["DEAD"].Value = 1;
+                return null;
             }
         }
     }
